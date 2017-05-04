@@ -13,8 +13,8 @@
 
 !.gitignore
 
-!.xterm-256color-italic.terminfo
+!xterm-256color-italic.terminfo
 
-!.tmux-256color.terminfo
+!tmux-256color.terminfo
 
 !.zshrc
