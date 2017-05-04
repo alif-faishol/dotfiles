@@ -11,11 +11,6 @@
 !.tmux/
 !.tmux/tmuxline
 
-!.oh-my-zsh/
-!.oh-my-zsh/custom/
-!.oh-my-zsh/custom/themes/
-!.oh-my-zsh/custom/themes/spaceship.zsh-theme
-
 !.gitignore
 
 !.xterm-256color-italic.terminfo
