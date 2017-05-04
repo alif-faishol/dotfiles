@@ -12,12 +12,12 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'rizzatti/dash.vim'
-Plug 'flazz/vim-colorschemes'
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'Yggdroot/indentLine'
-Plug 'othree/html5.vim'
+Plug 'sheerun/vim-polyglot'
+Plug 'atelierbram/Base2Tone-vim'
 
 call plug#end()
 
@@ -26,11 +26,12 @@ call plug#end()
 " ---------------------------------------------------------------------
 set number
 set rnu                                                 " relative number
-"syntax on
+syntax on
 set clipboard=unnamed                                   " clipboard yanking
 filetype plugin indent on
 set showcmd
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=2                     " blinking cursor on insert mode
+set termguicolors
 set timeoutlen=500 ttimeoutlen=0
 set mouse=a                                             " enable mouse support
 set nowrap
@@ -47,7 +48,7 @@ set incsearch
 set ignorecase
 set smartcase
 
-colorscheme antares
+colorscheme Base2Tone_EveningDark
 set splitbelow
 set splitright
 set omnifunc=syntaxcomplete#Complete
