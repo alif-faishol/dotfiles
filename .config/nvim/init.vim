@@ -17,7 +17,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'sheerun/vim-polyglot'
-Plug 'atelierbram/Base2Tone-vim'
+Plug 'flazz/vim-colorschemes'
 
 call plug#end()
 
@@ -48,7 +48,7 @@ set incsearch
 set ignorecase
 set smartcase
 
-colorscheme Base2Tone_EveningDark
+colorscheme darkeclipse
 set splitbelow
 set splitright
 set omnifunc=syntaxcomplete#Complete
@@ -159,4 +159,4 @@ augroup end
 
     " indentLine
     let g:indentLine_color_term = 237
-    let g:indentLine_char = '.'
+    let g:indentLine_char = '•'

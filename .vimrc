@@ -16,6 +16,7 @@ Plug 'flazz/vim-colorschemes'
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'sheerun/vim-polyglot'
 Plug 'Yggdroot/indentLine'
 Plug 'jszakmeister/vim-togglecursor'
 
@@ -31,7 +32,8 @@ set clipboard=unnamed                                   " clipboard yanking
 filetype plugin indent on
 set showcmd
 " let $NVIM_TUI_ENABLE_CURSOR_SHAPE=2                     " blinking cursor on insert mode
-set t_Co=256
+
+set termguicolors
 set timeoutlen=500 ttimeoutlen=0
 set mouse=a                                             " enable mouse support
 set nowrap
@@ -48,7 +50,7 @@ set incsearch
 set ignorecase
 set smartcase
 
-colorscheme antares
+colorscheme darkeclipse
 set splitbelow
 set splitright
 set omnifunc=syntaxcomplete#Complete
@@ -153,4 +155,4 @@ nnoremap <silent> <Leader>f :FZF<CR>
 
 " indentLine
 let g:indentLine_color_term = 237
-let g:indentLine_char = '.'
+let g:indentLine_char = '•'
