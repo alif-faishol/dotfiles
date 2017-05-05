@@ -31,19 +31,26 @@ syntax on
 set clipboard=unnamed                                   " clipboard yanking
 filetype plugin indent on
 set showcmd
-" let $NVIM_TUI_ENABLE_CURSOR_SHAPE=2                     " blinking cursor on insert mode
 
+" true color fix
+let &t_8f="\e[38;2;%ld;%ld;%ldm"
+let &t_8b="\e[48;2;%ld;%ld;%ldm"
+set t_ut=                                               " weird background fix in tmux
 set termguicolors
+
 set timeoutlen=500 ttimeoutlen=0
 set mouse=a                                             " enable mouse support
 set nowrap
+
 " tab
 set tabstop=4                                           " show existing tab with 4 spaces width
 set shiftwidth=4                                        " when indenting with '>', use 4 spaces width
 set expandtab                                           " On pressing tab, insert 4 spaces
+
 " fold
 set foldmethod=indent                                   " folding based on indent
 set nofoldenable                                        " don't auto fold at start
+
 " search
 set nohlsearch
 set incsearch
@@ -70,6 +77,15 @@ map <leader>tm :tabmove<cr>
 
 " mapping to split window for 1 file, good for long file
 noremap <silent> <Leader>vs :<C-u>let @z=&so<CR>:set so=0 noscb<CR>:bo vs<CR>Ljzt:setl scb<CR><C-w>p:setl scb<CR>:let &so=@z<CR>
+
+" uses italic for some cases
+hi htmlArg gui=italic
+hi Comment gui=italic
+hi Type    gui=italic
+hi htmlArg cterm=italic
+hi Comment cterm=italic
+hi Type    cterm=italic
+
 
 
 " ---------------------------------------------------------------------
@@ -104,9 +120,9 @@ augroup omnifuncs
   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 augroup end
 if exists('g:plugs["tern_for_vim"]')
-  let g:tern_show_argument_hints = 'on_hold'
-  let g:tern_show_signature_in_pum = 1
-  autocmd FileType javascript setlocal omnifunc=tern#Complete
+    let g:tern_show_argument_hints = 'on_hold'
+    let g:tern_show_signature_in_pum = 1
+    autocmd FileType javascript setlocal omnifunc=tern#Complete
 endif
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>" 
 
@@ -118,13 +134,13 @@ let g:vcoolor_map = '<leader>vc'
 " fzf
 " This is the default extra key bindings
 let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-x': 'split',
-  \ 'ctrl-v': 'vsplit' }
+            \ 'ctrl-t': 'tab split',
+            \ 'ctrl-x': 'split',
+            \ 'ctrl-v': 'vsplit' }
 
 " Default fzf layout
 " - down / up / left / right
-let g:fzf_layout = { 'down': '40%' }
+let g:fzf_layout = { 'down': '10' }
 
 " In Neovim, you can set up fzf window using a Vim command
 " let g:fzf_layout = { 'window': 'enew' }
@@ -133,18 +149,18 @@ let g:fzf_layout = { 'down': '40%' }
 
 " Customize fzf colors to match your color scheme
 let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
+            \ { 'fg':      ['fg', 'Normal'],
+            \ 'bg':      ['bg', 'Normal'],
+            \ 'hl':      ['fg', 'Comment'],
+            \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+            \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+            \ 'hl+':     ['fg', 'Statement'],
+            \ 'info':    ['fg', 'PreProc'],
+            \ 'prompt':  ['fg', 'Conditional'],
+            \ 'pointer': ['fg', 'Exception'],
+            \ 'marker':  ['fg', 'Keyword'],
+            \ 'spinner': ['fg', 'Label'],
+            \ 'header':  ['fg', 'Comment'] }
 
 " Enable per-command history.
 " CTRL-N and CTRL-P will be automatically bound to next-history and
