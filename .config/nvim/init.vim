@@ -32,7 +32,7 @@ filetype plugin indent on
 set showcmd
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=2                     " blinking cursor on insert mode
 set termguicolors
-set timeoutlen=500 ttimeoutlen=0
+set timeoutlen=1000 ttimeoutlen=0
 set mouse=a                                             " enable mouse support
 set nowrap
 
@@ -121,7 +121,10 @@ inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 " vCoolor
 let g:vcoolor_lowercase = 1
 let g:vcoolor_disable_mappings = 1
-let g:vcoolor_map = '<leader>vc'
+let g:vcoolor_map = '<leader>#'
+let g:vcool_ins_rgba_map = '<leader>rgba'
+let g:vcool_ins_rgb_map = '<leader>rgb'
+let g:vcool_ins_hsl_map = '<leader>hsl'
 
 " fzf
 " This is the default extra key bindings
