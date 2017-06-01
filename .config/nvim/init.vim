@@ -18,6 +18,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'sheerun/vim-polyglot'
 Plug 'flazz/vim-colorschemes'
+Plug 'crater2150/vim-theme-chroma'
+Plug 'mattn/emmet-vim'
 
 call plug#end()
 
@@ -51,7 +53,8 @@ set incsearch
 set ignorecase
 set smartcase
 
-colorscheme darkeclipse
+colorscheme chroma
+set background=dark
 set splitbelow
 set splitright
 set omnifunc=syntaxcomplete#Complete
@@ -167,3 +170,7 @@ nnoremap <silent> <Leader>f :FZF<CR>
 " indentLine
 let g:indentLine_color_term = 237
 let g:indentLine_char = '•'
+
+" emmet-vim
+let g:user_emmet_leader_key='<leader>'
+
