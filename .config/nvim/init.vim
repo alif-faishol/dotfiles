@@ -40,7 +40,7 @@ let $NVIM_TUI_ENABLE_CURSOR_SHAPE=2                     " blinking cursor on ins
 set termguicolors
 set timeoutlen=1000 ttimeoutlen=0
 set mouse=a                                             " enable mouse support
-set nowrap
+set wrap
 
 " tab
 " ---
@@ -73,9 +73,9 @@ map <leader>tt :tabnew<cr>
 map <leader>te :tabedit
 map <leader>tc :tabclose<cr>
 map <leader>to :tabonly<cr>
-map <leader>tn :tabnext<cr>
-map <leader>tp :tabprevious<cr>
-map <leader>tf :tabfirst<cr>
+map <leader>tk :tabnext<cr>
+map <leader>tj :tabprevious<cr>
+map <leader>th :tabfirst<cr>
 map <leader>tl :tablast<cr>
 map <leader>tm :tabmove<cr>
 
@@ -191,7 +191,7 @@ nnoremap <silent> <Leader>f :FZF<CR>
 " indentLine
 " ----------
 let g:indentLine_color_term = 237
-let g:indentLine_char = '•'
+let g:indentLine_char = '│'
 
 
 " emmet-vim
