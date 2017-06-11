@@ -20,6 +20,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'flazz/vim-colorschemes'
 Plug 'crater2150/vim-theme-chroma'
 Plug 'mattn/emmet-vim'
+Plug 'tpope/vim-obsession'
 
 " Snippets
 Plug 'SirVer/ultisnips'
@@ -202,7 +203,7 @@ let g:user_emmet_leader_key='<leader>'
 " UltiSnip
 " --------
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsExpandTrigger="<leader><tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
