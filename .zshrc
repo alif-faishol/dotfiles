@@ -91,3 +91,6 @@ source $ZSH/oh-my-zsh.sh
 export PATH="/usr/local/sbin:$PATH"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_TMUX=1
+
+
+source "/Users/alifaishol/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
