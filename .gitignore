@@ -12,6 +12,7 @@
 !.tmux/tmuxline
 
 !.gitignore
+!.gitignore_global
 
 !xterm-256color-italic.terminfo
 
