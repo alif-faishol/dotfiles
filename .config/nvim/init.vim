@@ -21,6 +21,7 @@ Plug 'flazz/vim-colorschemes'
 Plug 'crater2150/vim-theme-chroma'
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-obsession'
+Plug 'editorconfig/editorconfig-vim'
 
 " Snippets
 Plug 'SirVer/ultisnips'
