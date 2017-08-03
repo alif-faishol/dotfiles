@@ -24,8 +24,8 @@ Plug 'tpope/vim-obsession'
 Plug 'editorconfig/editorconfig-vim'
 
 " Snippets
-Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
 
 call plug#end()
 
@@ -100,6 +100,7 @@ hi Type    cterm=italic
 " NERDTree
 " --------
 map <C-n> :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
 
 
 " Syntastic
@@ -107,6 +108,8 @@ map <C-n> :NERDTreeToggle<CR>
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exe = '[ -f "PATH=$(npm bin):$PATH eslint" ] && PATH=$(npm bin):$PATH eslint || eslint'
 
 
 " vim-airline
@@ -205,8 +208,8 @@ let g:user_emmet_leader_key='<leader>'
 " --------
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<leader><tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsJumpForwardTrigger="<leader>l"
+let g:UltiSnipsJumpBackwardTrigger="<leader>h"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
