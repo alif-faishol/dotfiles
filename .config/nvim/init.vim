@@ -22,6 +22,7 @@ Plug 'crater2150/vim-theme-chroma'
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-obsession'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'fleischie/vim-styled-components'
 
 " Snippets
 Plug 'honza/vim-snippets'
