@@ -102,6 +102,7 @@ hi Type    cterm=italic
 " --------
 map <C-n> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
+let NERDTreeIgnore = ['.DS_Store']
 
 
 " Syntastic
