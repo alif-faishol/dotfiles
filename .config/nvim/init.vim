@@ -6,27 +6,32 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
-Plug 'scrooloose/syntastic'
 Plug 'KabbAmine/vCoolor.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'rizzatti/dash.vim'
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'Yggdroot/indentLine'
-Plug 'sheerun/vim-polyglot'
-Plug 'flazz/vim-colorschemes'
-Plug 'crater2150/vim-theme-chroma'
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-obsession'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'fleischie/vim-styled-components'
+Plug 'jiangmiao/auto-pairs'
+
+" Display
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'Yggdroot/indentLine'
+Plug 'flazz/vim-colorschemes'
+Plug 'crater2150/vim-theme-chroma'
+Plug 'airblade/vim-gitgutter'
 
 " Snippets
 Plug 'honza/vim-snippets'
 Plug 'SirVer/ultisnips'
+
+" Syntax
+Plug 'fleischie/vim-styled-components'
+Plug 'sheerun/vim-polyglot'
+Plug 'scrooloose/syntastic'
 
 call plug#end()
 
@@ -221,3 +226,6 @@ let g:UltiSnipsEditSplit="vertical"
 " ------------
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 
+
+" gitgutter
+set updatetime=250
