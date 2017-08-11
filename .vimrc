@@ -15,6 +15,7 @@ Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-obsession'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'jiangmiao/auto-pairs'
+Plug 'christoomey/vim-tmux-navigator'
 
 " Display
 Plug 'vim-airline/vim-airline'
