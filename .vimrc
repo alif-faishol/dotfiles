@@ -3,7 +3,6 @@
 " ---------------------------------------------------------------------
 call plug#begin('~/.vim/plugged')
 
-Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'KabbAmine/vCoolor.vim'
@@ -55,7 +54,9 @@ set termguicolors
 
 set timeoutlen=1000 ttimeoutlen=0
 set mouse=a                                             " enable mouse support
-set nowrap
+set wrap
+set cursorline
+set showbreak=↪\ \ 
 
 " tab
 set tabstop=2                                           " show existing tab with 4 spaces width
@@ -65,9 +66,10 @@ set expandtab                                           " On pressing tab, inser
 " fold
 set foldmethod=indent                                   " folding based on indent
 set nofoldenable                                        " don't auto fold at start
+nnoremap <space> za
 
 " search
-set nohlsearch
+set hlsearch
 set incsearch
 set ignorecase
 set smartcase
@@ -81,6 +83,7 @@ let mapleader      = ','
 let maplocalleader = ','
 map <leader>bp :bp<cr>
 map <leader>bn :bn<cr>
+
 map <leader>tt :tabnew<cr>
 map <leader>te :tabedit
 map <leader>tc :tabclose<cr>
@@ -90,6 +93,9 @@ map <leader>tj :tabprevious<cr>
 map <leader>th :tabfirst<cr>
 map <leader>tl :tablast<cr>
 map <leader>tm :tabmove<cr>
+
+nnoremap n nzzzv
+nnoremap N Nzzzv
 
 " mapping to split window for 1 file, good for long file
 noremap <silent> <Leader>vs :<C-u>let @z=&so<CR>:set so=0 noscb<CR>:bo vs<CR>Ljzt:setl scb<CR><C-w>p:setl scb<CR>:let &so=@z<CR>
@@ -151,6 +157,7 @@ if exists('g:plugs["tern_for_vim"]')
   autocmd FileType javascript setlocal omnifunc=tern#Complete
 endif
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>" 
+let g:neoplete#file#enable_buffer_path=1
 
 
 " vCoolor
@@ -211,7 +218,7 @@ let g:indentLine_char = '│'
 
 " emmet-vim
 " ---------
-let g:user_emmet_leader_key='<leader>'
+let g:user_emmet_leader_key='<leader>,'
 
 
 " UltiSnip
