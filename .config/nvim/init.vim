@@ -16,6 +16,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'terryma/vim-smooth-scroll'
+Plug 'shime/vim-livedown'
 
 " Display
 Plug 'vim-airline/vim-airline'
@@ -172,32 +173,35 @@ let g:tern#filetypes = [
       \ '...'
       \ ]
 
+if !exists('doc')
+
 " if also uses tern_for_vim
-" let g:tern#command = ['tern']
-" let g:tern#arguments = ['--persistent']
+let g:tern#command = ['tern']
+let g:tern#arguments = ['--persistent']
 
 
-" let g:deoplete#enable_at_startup = 1
-" if !exists('g:deoplete#omni#input_patterns')
-"   let g:deoplete#omni#input_patterns = {}
-" endif
-" autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-" augroup omnifuncs
-"   autocmd!
-"   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-"   autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-"   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-"   autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-"   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-" augroup end
-" if exists('g:plugs["tern_for_vim"]')
-"   let g:tern_show_argument_hints = 'on_hold'
-"   let g:tern_show_signature_in_pum = 1
-"   autocmd FileType javascript setlocal omnifunc=tern#Complete
-" endif
-" inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>" 
-" let g:deoplete#file#enable_buffer_path=1
+let g:deoplete#enable_at_startup = 1
+if !exists('g:deoplete#omni#input_patterns')
+  let g:deoplete#omni#input_patterns = {}
+endif
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+augroup omnifuncs
+  autocmd!
+  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+augroup end
+if exists('g:plugs["tern_for_vim"]')
+  let g:tern_show_argument_hints = 'on_hold'
+  let g:tern_show_signature_in_pum = 1
+  autocmd FileType javascript setlocal omnifunc=tern#Complete
+endif
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>" 
+let g:deoplete#file#enable_buffer_path=1
 
+endif
 
 " vCoolor
 " -------
@@ -281,3 +285,20 @@ set updatetime=250
 
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
 noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+
+
+
+" ---------------------------------------------------------------------
+"  Vim for editing documents
+" ---------------------------------------------------------------------
+
+if exists('doc')
+  set spelllang=id
+  set spell
+  set tw=95
+  set colorcolumn=96
+  let g:livedown_autorun = 1
+  let g:livedown_open = 1
+  let g:deoplete#disable_auto_complete = 1
+  let g:vim_markdown_conceal = 0
+endif
