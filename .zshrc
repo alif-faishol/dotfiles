@@ -102,7 +102,8 @@ function ranger-cd {
 
 alias nvimdoc="nvim --cmd 'let doc=1'"
 
-export PATH="/usr/local/sbin:$PATH"
+export ANDROID_SDK_HOME="/Volumes/Project/Applications/AndroidSDK"
+export PATH="$ANDROID_SDK_HOME/emulator:$ANDROID_SDK_HOME/tools:/usr/local/sbin:$PATH"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_TMUX=1
 

@@ -8,6 +8,8 @@ Plug 'jistr/vim-nerdtree-tabs'
 Plug 'KabbAmine/vCoolor.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'ervandew/supertab'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'mattn/emmet-vim'
@@ -17,6 +19,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'terryma/vim-smooth-scroll'
 Plug 'shime/vim-livedown'
+Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 
 " Display
 Plug 'vim-airline/vim-airline'
@@ -67,7 +70,6 @@ set expandtab                                           " On pressing tab, inser
 " ----
 set foldmethod=indent
 set nofoldenable                                        " don't auto fold at start
-nnoremap <space> za
 
 " search
 " ------
@@ -115,6 +117,10 @@ hi htmlArg cterm=italic
 hi Comment cterm=italic
 hi Type    cterm=italic
 
+" Neovim python
+" -------------
+let g:python3_host_prog = '/usr/local/opt/python3/bin/python3'
+
 " ---------------------------------------------------------------------
 "  Plugin Config
 " ---------------------------------------------------------------------
@@ -146,55 +152,10 @@ let g:airline#extensions#tabline#enabled = 1
 " deoplete
 " --------
 let g:deoplete#enable_at_startup = 1
-
-let g:deoplete#omni#functions = {}
-let g:deoplete#omni#functions.javascript = [
-  \ 'tern#Complete'
-\]
-
-" let g:deoplete#sources = {}
-" let g:deoplete#sources['javascript.jsx'] = ['file', 'ultisnips', 'ternjs']
-
-" Use deoplete.
-let g:tern_request_timeout = 1
-let g:tern_show_signature_in_pum = '0'
-
-" move selection from top to bottom when press tab
-" use tab to forward cycle
-inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-" use tab to backward cycle
-inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
-
-"Add extra filetypes
-let g:tern#filetypes = [
-      \ 'jsx',
-      \ 'javascript.jsx',
-      \ 'vue',
-      \ '...'
-      \ ]
-
-" if also uses tern_for_vim
-let g:tern#command = ['tern']
-let g:tern#arguments = ['--persistent']
-
-if !exists('g:deoplete#omni#input_patterns')
-  let g:deoplete#omni#input_patterns = {}
-endif
+" Autocomplete from files now works from current buffer
+let g:deoplete#file#enable_buffer_path = 1
+" Close the preview window automatically after completion is done
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-augroup omnifuncs
-  autocmd!
-  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-augroup end
-if exists('g:plugs["tern_for_vim"]')
-  let g:tern_show_argument_hints = 'on_hold'
-  let g:tern_show_signature_in_pum = 1
-  autocmd FileType javascript setlocal omnifunc=tern#Complete
-endif
-let g:deoplete#file#enable_buffer_path=1
 
 
 " vCoolor
@@ -280,6 +241,10 @@ set updatetime=250
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
 noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 
+
+" vim-latex-live-preview
+let g:livepreview_previewer = 'open -a Preview'
+autocmd Filetype tex setl updatetime=1
 
 
 " ---------------------------------------------------------------------
