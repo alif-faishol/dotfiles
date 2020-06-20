@@ -6,38 +6,34 @@ call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'KabbAmine/vCoolor.vim'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'ervandew/supertab'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'yuttie/comfortable-motion.vim'
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-obsession'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'jiangmiao/auto-pairs'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'terryma/vim-smooth-scroll'
 Plug 'shime/vim-livedown'
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 
-" Display
+" UI
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'Yggdroot/indentLine'
 Plug 'flazz/vim-colorschemes'
 Plug 'crater2150/vim-theme-chroma'
-Plug 'airblade/vim-gitgutter'
-Plug 'hachy/eva01.vim'
+Plug 'connorholyday/vim-snazzy'
 
 " Snippets
 Plug 'honza/vim-snippets'
-Plug 'SirVer/ultisnips'
 
 " Syntax
-Plug 'styled-components/vim-styled-components'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'sheerun/vim-polyglot'
-Plug 'scrooloose/syntastic'
+
 
 call plug#end()
 
@@ -47,7 +43,6 @@ call plug#end()
 set number
 set rnu                                                 " relative number
 syntax on
-set clipboard=unnamed                                   " clipboard yanking
 filetype plugin indent on
 set showcmd
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
@@ -59,6 +54,7 @@ set mouse=a                                             " enable mouse support
 set wrap
 set cursorline
 set showbreak=↪\ \ 
+au BufEnter *.* :syntax sync fromstart
 
 " tab
 " ---
@@ -70,6 +66,23 @@ set expandtab                                           " On pressing tab, inser
 " ----
 set foldmethod=indent
 set nofoldenable                                        " don't auto fold at start
+
+" remap
+" ----
+let mapleader      = ','
+let maplocalleader = ','
+" " Copy to clipboard
+vnoremap  <leader>y  "+y
+nnoremap  <leader>Y  "+yg_
+nnoremap  <leader>y  "+y
+
+" " Paste from clipboard
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
+vnoremap <leader>p "+p
+vnoremap <leader>P "+P
+
+nnoremap <C-g> :TmuxNavigateLeft<CR>
 
 " search
 " ------
@@ -87,8 +100,6 @@ set background=dark
 set splitbelow
 set splitright
 set omnifunc=syntaxcomplete#Complete
-let mapleader      = ','
-let maplocalleader = ','
 map <leader>bp :bp<cr>
 map <leader>bn :bn<cr>
 
@@ -132,13 +143,12 @@ let NERDTreeShowHidden=1
 let NERDTreeIgnore = ['.DS_Store']
 
 
-" Syntastic
-" ---------
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 1
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_eslint_exe = "PATH=$(npm bin):$PATH eslint"
+" " ALE
+" " ---------
+" let g:ale_lint_delay = 3000
+" let g:ale_lint_on_insert_leave = 0
+" " Fix files automatically on save
+" let g:ale_fix_on_save = 1
 
 
 " vim-airline
@@ -149,15 +159,6 @@ let g:airline_theme='kolor'
 let g:airline#extensions#tabline#enabled = 1
 
 
-" deoplete
-" --------
-let g:deoplete#enable_at_startup = 1
-" Autocomplete from files now works from current buffer
-let g:deoplete#file#enable_buffer_path = 1
-" Close the preview window automatically after completion is done
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-
-
 " vCoolor
 " -------
 let g:vcoolor_lowercase = 1
@@ -166,6 +167,14 @@ let g:vcoolor_map = '<leader>#'
 let g:vcool_ins_rgba_map = '<leader>rgba'
 let g:vcool_ins_rgb_map = '<leader>rgb'
 let g:vcool_ins_hsl_map = '<leader>hsl'
+
+" coc
+" ---
+
+
+" supertab
+" --------
+let g:SuperTabDefaultCompletionType = "<c-n>"
 
 
 " fzf
@@ -206,7 +215,8 @@ let g:fzf_colors =
 " explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 nnoremap <silent> <Leader>f :FZF<CR>
-
+command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--color=hl:#8a8a8a,hl+:#00afff --delimiter : --nth 4..'}, <bang>0)
+nnoremap <silent> <Leader>c :Ag<CR>
 
 " indentLine
 " ----------
@@ -219,45 +229,15 @@ let g:indentLine_char = '│'
 let g:user_emmet_leader_key='<leader>,'
 
 
-" UltiSnip
-" --------
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<leader><tab>"
-let g:UltiSnipsJumpForwardTrigger="<leader>l"
-let g:UltiSnipsJumpBackwardTrigger="<leader>h"
-
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
-
-
 " editorconfig
 " ------------
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
-
-
-" gitgutter
-set updatetime=250
-
-noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
-noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 
 
 " vim-latex-live-preview
 let g:livepreview_previewer = 'open -a Preview'
 autocmd Filetype tex setl updatetime=1
 
+let g:comfortable_motion_interval = 1000.0 / 24
 
-" ---------------------------------------------------------------------
-"  Vim for editing documents
-" ---------------------------------------------------------------------
-
-if exists('doc')
-  set spelllang=id
-  set spell
-  set tw=95
-  set colorcolumn=96
-  let g:livedown_autorun = 1
-  let g:livedown_open = 1
-  let g:deoplete#disable_auto_complete = 1
-  let g:vim_markdown_conceal = 0
-endif
+let g:vim_markdown_conceal = 0

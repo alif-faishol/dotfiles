@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/alifaishol/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
@@ -10,7 +10,7 @@ export LANG=en_US.UTF-8
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="spaceship"
+ZSH_THEME="amuse"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -88,6 +88,8 @@ function ranger-cd {
     rm -f -- "$tempfile"
 }
 
+bindkey \^U backward-kill-line
+
 # ======================================================
 # Aliases
 # ======================================================
@@ -102,12 +104,16 @@ function ranger-cd {
 
 alias nvimdoc="nvim --cmd 'let doc=1'"
 
-export ANDROID_SDK_HOME="/Volumes/Project/Applications/AndroidSDK"
-export PATH="$ANDROID_SDK_HOME/emulator:$ANDROID_SDK_HOME/tools:/usr/local/sbin:$PATH"
+export ANDROID_HOME="/Volumes/Project/Applications/AndroidSDK"
+export PATH="$PATH:$ANDROID_HOME/tools"
+export PATH="$PATH:$ANDROID_HOME/tools/bin"
+export PATH="$PATH:$ANDROID_HOME/emulator"
+export PATH="$PATH:$ANDROID_HOME/platform-tools"
+export PATH="/usr/local/sbin:$PATH"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_TMUX=1
 
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 
-source "/Users/alifaishol/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
-
-
+export HOMEBREW_GITHUB_API_TOKEN=736d2ea54ce1420ab563b75e4a28d07e090749ed
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

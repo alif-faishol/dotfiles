@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "coc-eslint": ">=1.2.7",
+    "coc-git": ">=1.7.15",
+    "coc-json": ">=1.2.6",
+    "coc-phpls": ">=2.1.8",
+    "coc-snippets": ">=2.1.28",
+    "coc-stylelint": ">=1.1.0",
+    "coc-tslint-plugin": ">=1.1.1",
+    "coc-tsserver": ">=1.5.2"
+  }
+}
