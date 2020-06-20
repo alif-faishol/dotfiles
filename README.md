@@ -6,14 +6,14 @@
 4. https://github.com/tmux-plugins/tpm
 5. https://github.com/neovim/neovim
 6. https://github.com/ranger/ranger
+7. https://github.com/junegunn/vim-plug#neovim
 
 ### Setup
 
-1. Adds terminfo
-
+1. Add terminfos
 ```bash
 $ tic -x tmux-256color.terminfo
-$ tic -x tmux-256color.terminfo
+$ tic -x xterm-256color-italic.terminfo
 ```
 
 2. Install dependencies
