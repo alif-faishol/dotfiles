@@ -1,5 +1,7 @@
 {
   "javascript.validate.enable": false,
   "eslint.autoFixOnSave": true,
-  "git.addGBlameToVirtualText": true
+  "git.addGBlameToVirtualText": true,
+  "vetur.dev.logLevel": "DEBUG",
+  "vetur.trace.server": "verbose"
 }
