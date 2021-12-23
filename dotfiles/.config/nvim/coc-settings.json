@@ -1,7 +1,78 @@
 {
   "javascript.validate.enable": false,
   "eslint.autoFixOnSave": true,
+  "git.enableGlobalStatus": false,
+  "signature.triggerSignatureWait": 200,
+  "suggest.triggerCompletionWait": 200,
+  "suggest.triggerAfterInsertEnter": false,
+  "stylelint.filetypes": [
+    "css",
+    "wxss",
+    "scss",
+    "less",
+    "postcss",
+    "sugarss",
+    "vue"
+  ],
   "git.addGBlameToVirtualText": true,
   "vetur.dev.logLevel": "DEBUG",
-  "vetur.trace.server": "verbose"
+  "vetur.trace.server": "verbose",
+  "languageserver": {
+    "tailwindcss": {
+      "module": "~/.config/nvim/tailwindcss-language-server",
+      "filetypes": [
+        "blade",
+        "edge",
+        "eelixir",
+        "ejs",
+        "elixir",
+        "elm",
+        "erb",
+        "eruby",
+        "haml",
+        "handlebars",
+        "htmldjango",
+        "html",
+        "HTML (EEx)",
+        "HTML (Eex)",
+        "html.twig",
+        "jade",
+        "leaf",
+        "markdown",
+        "njk",
+        "nunjucks",
+        "php",
+        "razor",
+        "slim",
+        "svelte",
+        "twig",
+        "css",
+        "less",
+        "postcss",
+        "sass",
+        "scss",
+        "stylus",
+        "sugarss",
+        "javascript",
+        "javascriptreact",
+        "reason",
+        "rescript",
+        "typescript",
+        "typescriptreact",
+        "vue",
+        "svelte"
+      ],
+      "settings": {
+        "tailwindCSS.validate": true,
+        "tailwindCSS.lint.cssConflict": "warning",
+        "tailwindCSS.lint.invalidApply": "error",
+        "tailwindCSS.lint.invalidScreen": "error",
+        "tailwindCSS.lint.invalidVariant": "error",
+        "tailwindCSS.lint.invalidConfigPath": "error",
+        "tailwindCSS.lint.invalidTailwindDirective": "error",
+        "tailwindCSS.lint.recommendedVariantOrder": "warning"
+      }
+    }
+  }
+
 }

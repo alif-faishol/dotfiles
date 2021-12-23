@@ -1,11 +1,12 @@
 #!/bin/bash
 
 HOMEDIR=$HOME
+CURRENTDIR=$(pwd -P)
 DOTFILEDIR="dotfiles"
 
 symlink_dotfile() {
   dest=$HOMEDIR/$(dirname $1)
-  mkdir -p $dest; ln -s $1 $dest
+  mkdir -p $dest; ln -s $CURRENTDIR/$DOTFILEDIR/$1 $dest
 }
 
 dotfiles=$(find $DOTFILEDIR -type f -print | cut -d/ -f2- 2> /dev/null)
