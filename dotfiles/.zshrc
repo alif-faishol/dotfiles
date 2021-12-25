@@ -118,6 +118,6 @@ export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 export HOMEBREW_GITHUB_API_TOKEN=736d2ea54ce1420ab563b75e4a28d07e090749ed
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# fnm
+export PATH=/Users/alifaishol/.fnm:$PATH
+eval "`fnm env --use-on-cd`"

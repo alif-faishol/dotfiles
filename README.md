@@ -7,6 +7,7 @@
 5. https://github.com/neovim/neovim
 6. https://github.com/ranger/ranger
 7. https://github.com/junegunn/vim-plug#neovim
+8. https://github.com/Schniz/fnm
 
 ### Setup
 

@@ -12,7 +12,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'sainnhe/sonokai'
 Plug 'norcalli/nvim-colorizer.lua'
-Plug 'edkolev/tmuxline.vim'
+" Plug 'edkolev/tmuxline.vim'
 Plug 'christoomey/vim-tmux-navigator'
 
 call plug#end()
@@ -124,7 +124,7 @@ EOF
 "===========================================================
 " Telescope.nvim
 "===========================================================
-nnoremap <silent> <Leader>f :Telescope find_files previewer=false theme=get_dropdown<CR>
+nnoremap <silent> <Leader>f :Telescope find_files previewer=false theme=get_dropdown hidden=true<CR>
 nnoremap <silent> <Leader>c :Telescope live_grep<CR>
 lua <<EOF
 local actions = require('telescope.actions')
