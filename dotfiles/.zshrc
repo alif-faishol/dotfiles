@@ -104,7 +104,7 @@ bindkey \^U backward-kill-line
 
 alias nvimdoc="nvim --cmd 'let doc=1'"
 
-export ANDROID_HOME="/Volumes/Project/Applications/AndroidSDK"
+export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH="$PATH:$ANDROID_HOME/tools"
 export PATH="$PATH:$ANDROID_HOME/tools/bin"
 export PATH="$PATH:$ANDROID_HOME/emulator"
@@ -121,3 +121,7 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 # fnm
 export PATH=/Users/alifaishol/.fnm:$PATH
 eval "`fnm env --use-on-cd`"
+
+# dotnet
+export PATH=$PATH:$HOME/dotnet
+export DOTNET_ROOT=$HOME/dotnet

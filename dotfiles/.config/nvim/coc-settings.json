@@ -19,7 +19,8 @@
   "vetur.trace.server": "verbose",
   "languageserver": {
     "tailwindcss": {
-      "module": "~/.config/nvim/tailwindcss-language-server",
+      "command": "tailwindcss-language-server",
+      "args": ["--stdio"],
       "filetypes": [
         "blade",
         "edge",
